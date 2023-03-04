@@ -1,0 +1,49 @@
+---
+import '@fontsource/space-mono';
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <nav>
+            <a href="/">Perfil</a>
+            <a href="/proyectos">Proyectos</a>
+            <a href="/bookshelf">BookShelf</a>
+            <a href="https://www.linkedin.com/in/tomoaki-iwaya/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/iwayato" target="_blank">GitHub</a>
+        </nav>
+        <title>Tomoaki Iwaya Villalobos</title>
+        <!-- your content is injected here -->
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    body {
+        margin-left: 20%;
+        margin-right: 20%;
+        font-family: "Space Mono";
+        color: #aaaaaa;
+        background-color: #262a2f;
+    }
+    nav {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+    }
+    a {
+        text-decoration: none;
+        color: #a7dad8;
+    }
+    h1 {
+        color: #eeeeee;
+    }
+    h2 {
+        color: #eeeeee;
+    }
+</style>
