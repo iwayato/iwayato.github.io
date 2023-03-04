@@ -3,8 +3,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-    <h1>Proyectos</h1>
-    <h2>Usando React.js y Chakra-UI</h2>
+    <h2>Desarrollo Front End</h2>
     <p>
         He trabajado en un par de ideas personales con el fin de mantener y promover
         mis habilidades como programador.
@@ -29,17 +28,45 @@ import Layout from "../layouts/Layout.astro";
             </p>
         </li>
     </ul>
-    <h2>Utilizando MATLAB</h2>
-    <p>
-        MATLAB es una herramienta que he utilizado en distintas asignaturas, pero si dudas el ramo en el cual
-        más lo disfute fue en <b>Robótica móvil</b> debido a que me permitió generar algoritmos y simular el 
-        resultado de éstos de forma práctica.
-    </p>
+    <h2>Prácticas universitarias</h2>
+    <ul>
+        <li>
+            <a href="http://ac3e.usm.cl/" target="_blank">
+                AC3E
+            </a>
+            <p>
+                Desarrollé una aplicación Front End que utiliza datos georreferenciados de sensores
+                inteligentes conectados a una red <b>LoRaWAN</b>. Si bien no trabajé directamente en el Back End,
+                también generé una API que permitía a la aplicación consumir los datos desde la BBDD, la cual decidimos hostear en <a href="https://firebase.google.com/?hl=es">Firebase</a>.
+            </p>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/company/coline-data/" target="_blank">
+                Coline Data
+            </a>
+            <p>
+                Trabajé en el diseño e implementación de una arquitectura que disponibiliza
+                como servicio un modelo de machine learning que permite realizar predicciones
+                sobre el estado de máquinas industriales.
+            </p>
+        </li>
+    </ul>
+    <h2>Proyectos de ramos</h2>
+    <ul>
+        <li>
+            Robótica móvil
+        </li>
+        <p>
+            MATLAB es una herramienta que he utilizado en distintas asignaturas, pero si dudas el ramo en el cual
+            más lo disfuté fue en <b>Robótica móvil</b> debido a que me permitió generar algoritmos para la evasión
+            de obstáculos y simular el resultado de éstos de forma práctica.
+        </p>
+    </ul>
     <div>
         <iframe 
             width="350" 
             height="196" 
-            src="https://www.youtube.com/embed/ZJnkOfDEcQY?controls=0" 
+            src="https://www.youtube.com/embed/ZJnkOfDEcQY" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -48,13 +75,18 @@ import Layout from "../layouts/Layout.astro";
         <iframe
             width="350" 
             height="196"  
-            src="https://www.youtube.com/embed/vCLMwzx0FfM?controls=0" 
+            src="https://www.youtube.com/embed/vCLMwzx0FfM" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
         </iframe>
     </div>
-
-
 </Layout>
+
+<style>
+    div {
+        display: flex;
+        justify-content: space-evenly;
+    }
+</style>
