@@ -3,15 +3,26 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-    <h2>Desarrollo Front End</h2>
+    <h2>Memoria universitaria</h2>
+    <p>
+        Actualmente me encuentro desarrollando mi proyecto de titulación, la cual consiste
+        en implmentar un sistema de reconocimiento facial sobre una plataforma robótica, en este caso, un
+        perro robot. La arquitectura que deseo implementar es la siguiente:
+        <div>
+            <img src = '/img/arquitectura_v4.png'>
+        </div>
+    </p>
+    <h2>Desarrollo Web</h2>
     <p>
         He trabajado en un par de ideas personales con el fin de mantener y promover
         mis habilidades como programador.
     </p>
     <ul>
         <li>
-            <a href="https://estadometro.vercel.app/" target="_blank">
-                Estado Red Metro
+            <a href="https://github.com/iwayato/estado-metro" target="_blank">
+                <h4>
+                    Estado Red Metro
+                </h4>
             </a>
             <p>
                 Es una aplicación sencilla que muestra el estado de las líneas del metro de Santiago.
@@ -19,7 +30,9 @@ import Layout from "../layouts/Layout.astro";
         </li>
         <li>
             <a href="https://calidad-del-aire-chile.vercel.app/" target="_blank">
-                Calidad del aire Chile
+                <h4>
+                    Calidad del aire Chile
+                </h4>
             </a>
             <p>
                 Utilizando la <a href="https://sinca.mma.gob.cl/index.php/json/listadomapa2k19/">API</a> 
@@ -32,17 +45,21 @@ import Layout from "../layouts/Layout.astro";
     <ul>
         <li>
             <a href="http://ac3e.usm.cl/" target="_blank">
-                AC3E
+                <h4>
+                    AC3E
+                </h4>
             </a>
             <p>
-                Desarrollé una aplicación Front End que utiliza datos georreferenciados de sensores
+                Desarrollé una aplicación que utiliza datos georreferenciados de sensores
                 inteligentes conectados a una red <b>LoRaWAN</b>. Si bien no trabajé directamente en el Back End,
-                también generé una API que permitía a la aplicación consumir los datos desde la BBDD, la cual decidimos hostear en <a href="https://firebase.google.com/?hl=es">Firebase</a>.
+                también generé una API que permitía a la aplicación consumir los datos desde la BBDD, la cual decidimos desplegar en <a href="https://firebase.google.com/?hl=es">Firebase</a>.
             </p>
         </li>
         <li>
             <a href="https://www.linkedin.com/company/coline-data/" target="_blank">
-                Coline Data
+                <h4>
+                    Coline Data
+                </h4>
             </a>
             <p>
                 Trabajé en el diseño e implementación de una arquitectura que disponibiliza
@@ -54,7 +71,9 @@ import Layout from "../layouts/Layout.astro";
     <h2>Proyectos de ramos</h2>
     <ul>
         <li>
-            Robótica móvil
+            <h4>
+                Robótica móvil
+            </h4>
         </li>
         <p>
             MATLAB es una herramienta que he utilizado en distintas asignaturas, pero sin dudas el ramo en el cual
@@ -89,5 +108,10 @@ import Layout from "../layouts/Layout.astro";
     div {
         display: flex;
         justify-content: space-evenly;
+    }
+    img {
+        margin: 20px;
+        width: 55%;
+        height: 55%;
     }
 </style>
