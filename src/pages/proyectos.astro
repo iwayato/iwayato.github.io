@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <ul>
+        <li>
+            <h3>Proyecto de titulación: Sistema de reconocimiento facial implementado en robot cuadrúpedo Go1 para tareas de seguridad y vigilancia</h3>
+            <p>
+                Se generó una arquitectura híbrida con la cual se realiza detección facial en el hardware del robot (fabricado por <a href="https://shop.unitree.com/" target="_blank">Unitree</a>) para luego enviar los rostros detectados hacia un servidor local de procesamiento que se encarga de comparar la cara actual con aquellas almacenadas previamente en una base de datos.
+            </p>
+            <div>
+                <img src="arquitectura_general.png">
+            </div>
+        </li>
+        <li>
+            <h3>Calidad del aire Chile</h3>
+            <p>
+                Utilizando la <a href="https://sinca.mma.gob.cl/index.php/json/listadomapa2k19/">API</a>
+                que provee <a href="https://sinca.mma.gob.cl/">SINCA</a> se puede
+                monitorear el estado de los diversos sensores que miden la calidad
+                del aire a lo largo de Chile.
+            </p>
+            <p>
+                El deploy del proyecto se realizó mediante <a href="https://vercel.com/">Vercel</a> y puede ser accedido mediante este <a href="https://calidad-del-aire-chile.vercel.app/" target="_blank">link</a>.
+            </p>
+        </li>
+    </ul>
+</Layout>
+
+<style>
+    div {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    img {
+        margin: 10px;
+        display: block;
+        width: auto;
+        height: auto;
+    }
+</style>
