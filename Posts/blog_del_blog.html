@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iwayato</title>
+    <link rel="stylesheet" href="https://unpkg.com/mono.css@latest/dist/mono.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="inner">
+            <div class="header-logo">Posts</div>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <div class="inner">
+            <a href="../index.html">Perfil</a>
+            <a href="../projects.html">Proyectos</a>
+            <a href="../blog.html">Blog</a>
+            <a href="https://github.com/iwayato">GitHub</a>
+            <a href="https://www.linkedin.com/in/tomoaki-iwaya">LinkedIn</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <div class="inner">
+            <h2>El blog del blog (06/09/2024)</h2>
+            <figure>
+                <img src="https://static.wixstatic.com/media/e8b097_8fda4e0a85f84445b6c80bf631baa0b3~mv2.jpeg/v1/fill/w_640,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/e8b097_8fda4e0a85f84445b6c80bf631baa0b3~mv2.jpeg" alt="">
+            </figure>
+            <p>
+                Existe un ecosistema enorme para crear blogs o web estáticas simples, por ejemplo, antes había usado <a href="https://astro.build/">Astro</a> para hacer mi portafolio de desarrollador, pero se terminó convirtiendo en una copia de la información que ya tenía en <a href="https://www.linkedin.com/in/tomoaki-iwaya">LinkedIn</a> sumado a un par de proyectos que ya había realizado. Otra alternativa que descubrí mientras buscaba una alternativa más simple fue <a href="https://jekyllrb.com/">Jekyll</a>, pero no me motivaba mucho tener que instalar <span class="marker">Ruby</span>, <span class="marker">RubyGems</span>, <span class="marker">GCC and Make</span> para hacer mi portafolio. Buscando más alternativas, dí con <a href="https://kokushin.github.io/mono.css/#document-3">Mono.css</a>, un framework css bastante simple que aplica estilos de forma automática a los archivos html, bastan con incluir la siguiente línea al header del index.html <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/mono.css@latest/dist/mono.min.css""&gt;</code></pre>
+                Luego hice el deploy en GitHub pages.
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -9,3 +9,7 @@ nav {
 figure {
     margin-bottom: 30px;
 }
+
+pre {
+    margin-top: -1px;
+}
