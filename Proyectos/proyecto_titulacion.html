@@ -30,21 +30,59 @@
         <div class="inner">
             <h2>Sistema de reconocimiento facial con robot cuadrúpedo para aplicaciones de seguridad y vigilancia</h2>
             <p>
-                Este proyecto aborda dichos desafíos al implementar un sistema de reconocimiento facial en el robot
-                cuadrúpedo Go1, marcando un precedente en la convergencia de la robótica y los algoritmos para realizar reconocimiento facial.
-                El robot Go1 cuenta con un conjunto de computadores Jetson Nano y una tarjeta Raspberry Pi, por lo que es plausible ejecutar cargas computacionales relativamente elevadas en él.
+                La idea del proyecto consiste en implementar un sistema de reconocimiento facial en el robot cuadrúpedo
+                Go1, utilizando (idealmente) sus cámaras incorporadas.
+            </p>
+            <p>
+                Go1 cuenta con un conjunto de computadores Jetson Nano (cada uno de éstos conectados a una cámara
+                estéreo) y una tarjeta Raspberry Pi (encargada, dentro de otras cosas, de la conectividad WiFi), por lo
+                que es plausible ejecutar cargas computacionales relativamente (más adelante se explicará mejor este
+                punto) elevadas en él.
             </p>
             <figure>
                 <img src="https://m.media-amazon.com/images/I/61xgXmsOCEL.jpg" alt="">
                 <figcaption>Robot Go1 de Unitree.</figcaption>
             </figure>
             <p>
-                Antes de explicar cómo implementar el sistema, es necesario entender el funcionamiento de los algoritmos de reconocimiento facial:
+                Antes de explicar cómo implementé el sistema, es necesario entender el funcionamiento de los algoritmos
+                de reconocimiento facial:
             </p>
             <figure>
                 <img src="../Img/etapas_reconocimiento_facial.png" alt="">
-                <figcaption>Etapas reconocimiento facial.</figcaption>
+                <figcaption>Etapas para realizar reconocimiento facial.</figcaption>
             </figure>
+
+            <h3>Detección facial</h3>
+            <p>
+                Tal como lo indica su nombre, esta etapa se encarga de identificar la zona de la imagen donde hay
+                presencia de un rostro utilizando un algoritmo de detección de objetos entrenado para captar caras.
+            </p>
+
+            <h3>Extracción de características</h3>
+            <p>
+                Una vez identificado el rostro a reconocer, se procede a extraer la informacion contenida en éste, la
+                cual es representada como una estructura de datos, generalmente un vector
+            </p>
+
+            <h3>Reconocimiento facial</h3>
+            <p>
+                Finalmente, los datos anteriores son comparados con
+                aquellos registrados previamente en la base de datos y en la comparación donde se cumpla cierto criterio (dado que se pueden utilizar varios para este propósito) ocurre el reconocimiento facial.
+            </p>
+
+            <hr>
+
+            <p>
+                Si bien las etapas anteriores parecen sencillas de implementar, una de las mayores dificultades que tuve para hacerlo fue el hardware del robot. En primer lugar, la calidad de las imágenes era bastante mala, intenté reducir la resolución, pero esto implicaba trabajar con imágenes más pequeñas, lo que dificulta realizar la primera etapa de la detección facial, dado que en un frame, el rostro de por si ocupa poco espacio. En segundo lugar, las cámaras era de tipo "ojo de pez", es decir, poseen un campo de visión mayor a costa de introducir distorisón en las imágenes, lo anterior se puede entender mejor con el siguiente esquema:
+            </p>
+
+            <figure>
+                <img src="../Img/proceso_rectificacion.png" alt="">
+                <figcaption>Proceso de rectificación de una imagen.</figcaption>
+            </figure>
+
+            Era necesario eliminar esa distorsión dado que en ciertas situaciones impide que se pueda aplicar el algoritmo de detección facial, el proceso para quitar este ruido se denomina rectificación, lo que permite obtener una imagen sin el efecto ojo de pez, pero se pierde información en el proceso, dado que el último paso es recortar la imagen.
+
             <br>
             <br>
         </div>
