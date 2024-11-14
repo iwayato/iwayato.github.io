@@ -20,7 +20,6 @@
         <div class="inner">
             <a href="../index.html">Perfil</a>
             <a href="../projects.html">Proyectos</a>
-            <a href="../blog.html">Blog</a>
             <a href="https://github.com/iwayato">GitHub</a>
             <a href="https://www.linkedin.com/in/tomoaki-iwaya">LinkedIn</a>
         </div>
@@ -28,7 +27,10 @@
 
     <main class="content">
         <div class="inner">
-            <h2>Sistema de reconocimiento facial con robot cuadrúpedo para aplicaciones de seguridad y vigilancia</h2>
+            <h1>Sistema de reconocimiento facial con robot cuadrúpedo para aplicaciones de seguridad y vigilancia</h1>
+
+            <h2>Introducción</h2>
+
             <p>
                 La idea del proyecto consiste en implementar un sistema de reconocimiento facial en el robot cuadrúpedo
                 Go1, utilizando (idealmente) sus cámaras incorporadas.
@@ -36,15 +38,15 @@
             <p>
                 Go1 cuenta con un conjunto de computadores Jetson Nano (cada uno de éstos conectados a una cámara
                 estéreo) y una tarjeta Raspberry Pi (encargada, dentro de otras cosas, de la conectividad WiFi), por lo
-                que es plausible ejecutar cargas computacionales relativamente (más adelante se explicará mejor este
-                punto) elevadas en él.
+                que es plausible ejecutar cargas computacionales relativamente elevadas en él.
             </p>
             <figure>
                 <img src="https://m.media-amazon.com/images/I/61xgXmsOCEL.jpg" alt="">
                 <figcaption>Robot Go1 de Unitree.</figcaption>
             </figure>
             <p>
-                Antes de explicar cómo implementé el sistema, es necesario entender el funcionamiento de los algoritmos
+                Antes de explicar cómo se implementa el sistema, es necesario entender el funcionamiento de los
+                algoritmos
                 de reconocimiento facial:
             </p>
             <figure>
@@ -61,19 +63,26 @@
             <h3>Extracción de características</h3>
             <p>
                 Una vez identificado el rostro a reconocer, se procede a extraer la informacion contenida en éste, la
-                cual es representada como una estructura de datos, generalmente un vector
+                cual es representada como una estructura de datos, generalmente un vector.
             </p>
 
             <h3>Reconocimiento facial</h3>
             <p>
                 Finalmente, los datos anteriores son comparados con
-                aquellos registrados previamente en la base de datos y en la comparación donde se cumpla cierto criterio (dado que se pueden utilizar varios para este propósito) ocurre el reconocimiento facial.
+                aquellos registrados previamente en la base de datos y en la comparación donde se cumpla cierto criterio
+                (dado que se pueden utilizar varios para este propósito) ocurre el reconocimiento facial.
             </p>
 
-            <hr>
+            <h2>Dificultades</h2>
 
             <p>
-                Si bien las etapas anteriores parecen sencillas de implementar, una de las mayores dificultades que tuve para hacerlo fue el hardware del robot. En primer lugar, la calidad de las imágenes era bastante mala, intenté reducir la resolución, pero esto implicaba trabajar con imágenes más pequeñas, lo que dificulta realizar la primera etapa de la detección facial, dado que en un frame, el rostro de por si ocupa poco espacio. En segundo lugar, las cámaras era de tipo "ojo de pez", es decir, poseen un campo de visión mayor a costa de introducir distorisón en las imágenes, lo anterior se puede entender mejor con el siguiente esquema:
+                Si bien las etapas anteriores parecen sencillas de implementar, una de las mayores dificultades que se
+                tuvo para hacerlo fue el hardware del robot. En primer lugar, la calidad de las imágenes era bastante
+                mala, si bien se intentó reducir su resolución esto implicaba trabajar con imágenes más pequeñas, lo que
+                dificulta realizar la primera etapa de la detección facial, dado que en un frame generalmente los
+                rostros ocupan una pequeña área en la imagen . En segundo lugar, las cámaras era de tipo "ojo de pez",
+                es decir, poseen un campo de visión mayor a costa de introducir distorisón en las imágenes, lo anterior
+                se puede entender mejor con el siguiente esquema:
             </p>
 
             <figure>
@@ -81,8 +90,189 @@
                 <figcaption>Proceso de rectificación de una imagen.</figcaption>
             </figure>
 
-            Era necesario eliminar esa distorsión dado que en ciertas situaciones impide que se pueda aplicar el algoritmo de detección facial, el proceso para quitar este ruido se denomina rectificación, lo que permite obtener una imagen sin el efecto ojo de pez, pero se pierde información en el proceso, dado que el último paso es recortar la imagen.
+            <p>
+                Era necesario eliminar esa distorsión dado que en ciertas situaciones impide que se pueda aplicar el
+                algoritmo de detección facial, el proceso para quitar este ruido se denomina rectificación, lo que
+                permite
+                obtener una imagen sin el efecto "ojo de pez", pero se pierde información en el proceso, dado que el
+                último
+                paso es recortar la imagen.
+            </p>
 
+            <h2>Diseño de la arquitectura del sistema</h2>
+
+            Se proponen tres arquitecturas posibles:
+
+            <h3>En el robot</h3>
+
+            <figure>
+                <img src="../Img/arq_robot.png" alt="">
+                <figcaption>Arquitectura completa en el robot.</figcaption>
+            </figure>
+
+            <h3>En un servidor en la nube / local</h3>
+
+            <figure>
+                <img src="../Img/arq_servidor.png" alt="">
+                <figcaption>Arquitectura completa en un servidor local / nube.</figcaption>
+            </figure>
+
+            <h3>Híbrida</h3>
+
+            <figure>
+                <img src="../Img/arq_hibrida.png" alt="">
+                <figcaption>Arquitectura híbrida.</figcaption>
+            </figure>
+
+            Algunas consideraciones:
+
+            <ul>
+                <li>
+                    Independientemente de la arquitectura a implementar será necesario transmitir internamente las
+                    imágenes captadas por la cámara frontal hacia otra Jetson Nano para realizar el procesamiento.
+                </li>
+
+                <figure>
+                    <img src="../Img/consideracion_webcam.png" alt="">
+                </figure>
+
+                <li>
+                    La implementación para la transmisión interna la ofrece el fabricante dentro de su SDK.
+                </li>
+                <li>
+                    El adaptador WiFi es sólo necesario para la implementación en el servidor e híbrida.
+                </li>
+            </ul>
+
+            <h2>
+                Requerimientos funcionales
+            </h2>
+
+            Se consideraron más requerimientos tanto funcionales como no funcionales, sin embargo en las tablas se indican las más relevantes.
+
+            <figure>
+                <img src="../Img/req_funcionales.png" alt="">
+            </figure>
+
+            <h2>
+                Requerimientos no funcionales
+            </h2>
+
+            <figure>
+                <img src="../Img/req_no_funcionales.png" alt="">
+            </figure>
+
+            <h2>Evaluación de las arquitecturas</h2>
+
+            G: garantizado, NG: no garantizado y MG: medianamente garantizado.
+
+            <h3>
+                Según requerimientos funcionales
+            </h3>
+
+            <figure>
+                <img src="../Img/eva_req_funcionales.png" alt="">
+            </figure>
+
+            <ul>
+                <li>
+                    Implementación en servidor no garantiza funcionamiento en tiempo real debido al alto uso de ancho de banda y latencia para la transmisión de imágenes desde el robot hacia el servidor.
+                </li>
+                <li>
+                    Se intentó reducir tiempos de transmisión enviando frames más pequeños hacia el servidor y aumentando su tamaño en éstos para poder realizar detección facial.
+                </li>
+            </ul>
+
+            <h3>
+                Según requerimientos no funcionales
+            </h3>
+
+            <figure>
+                <img src="../Img/eva_req_no_funcionales.png" alt="">
+            </figure>
+
+            <ul>
+                <li>
+                    Implementación sólo en el robot es vulnerable a manipulaciones maliciosas, se aumenta el uso de la batería y es poco escalable.
+                </li>
+            </ul>
+
+            <h3>Tiempos de procesamiento al aumentar tamaño de imagen en el servidor</h3>
+
+            <p>
+                Para corroborar que la implementación en el servidor no permite la transmisión en tiempo real de los frames, se grabaron dos videos de resoluciones y duración diferentes, pequeños (160 x 120 [px] y 348 x 300 [px]) y por ende relativamente rápidos de enviar al servidor. Una vez recibidos en éste, se procesaron frame por frame aumentando su resolución para facilitar el reconocimiento facial con tres métodos diferentes y se midió el tiempo total, obteniendo los siguientes resultados:
+            </p>
+
+            <h4>Con la función resize() de OpenCV</h4>
+
+            <figure>
+                <img src="../Img/resize_opencv.png" alt="">
+            </figure>
+
+            <h4>Con la función upsample() de Dlib</h4>
+
+            <figure>
+                <img src="../Img/resize_upsample.png" alt="">
+            </figure>
+
+            <h4>Utilizando Super Resolution (SR)</h4>
+
+            <figure>
+                <img src="../Img/resize_sr.png" alt="">
+            </figure>
+
+            <p>
+                Teniendo en consideración lo mencionado anteriormente, es seguro indicar que las implementaciones en el robot y servidor son poco viables y por lo tanto se decide continuar con la solución híbrida.
+            </p>
+
+            <h2>Resultados solución híbrida</h2>
+
+            Si bien con la implementación híbrida se mejoró considerablemente el tiempo de envió, dado que el servidor sólo recibía la imagen del rostro, la calidad de éstas era bastante mala como para que el módulo de extracción de características realizará una operación adecuanda. En la mayoría de los casos las imágenes de los rostros tenían el siguiente aspecto:
+
+            <figure>
+                <img src="../Img/low_res_faces.png" alt="">
+            </figure>
+
+            y en el mejor de los casos:
+
+            <figure>
+                <img src="../Img/best_res_faces.png" alt="">
+            </figure>
+
+            <p>
+                Con lo anterior se determinó que la calidad producida a partir de los aspectos ópticos de los lentes de las cámaras del robot no permiten realizar reconocimiento facial de forma óptima. Sin embargo, aún quedaba la posibilidad de utilizar una cámara externa.
+            </p>
+
+            <h2>Resultados solución híbrida usando una webcam externa</h2>
+
+            La configuración física consistió en montar la webcam sobre la cabeza del robot (usando claramente cinta aislante como buen ing electrónico):
+
+            <figure>
+                <img src="../Img/webcam_on_go1.png" alt="">
+            </figure>
+
+            Con este setup, se logró realizar reconocimiento facial hasta con tres rostros en escena a una resolución de 640 x 480 [px], obteniendo los siguientes tiempos:
+
+            <figure>
+                <img src="../Img/tiempos_final.png" alt="">
+            </figure>
+
+            <h2>Conclusiones</h2>
+
+            <ul>
+                <li>
+                    Precedente para la futura implementación de sistemas de reconocimiento facial en plataformas móviles.
+                </li>
+                <li>
+                    Uso de arquitectura flexible y modular permite la aplicación del sistema en diferentes contextos.
+                </li>
+                <li>
+                    Posibilidad de implementar soluciones basadas en reconocimiento facial en entornos que no garantizan condiciones ideales para los algoritmos.
+                </li>
+            </ul>
+
+            Finalmente el código realizado para el proyecto lo pueden encontrar en <a href="https://github.com/iwayato">GitHub</a>.
+            
             <br>
             <br>
         </div>
