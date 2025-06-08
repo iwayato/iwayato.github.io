@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iwayato</title>
+    <link rel="stylesheet" href="https://unpkg.com/mono.css@latest/dist/mono.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="inner">
+            <div class="header-logo">Proyectos</div>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <div class="inner">
+            <a href="../index.html">Perfil</a>
+            <a href="../projects.html">Proyectos</a>
+            <a href="https://github.com/iwayato">GitHub</a>
+            <a href="https://www.linkedin.com/in/tomoaki-iwaya">LinkedIn</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <div class="inner">
+            <h1>Aplicación web para la visualización de las farmacias en turno en Chile</h1>
+
+            <p>
+                <a href="https://farmaciadeturnocl.vercel.app/">Farmacias en turno - Chile</a> permite visualizar qué farmacias se encuentran en turno dado el momento actual. Para obtener los datos se utiliza el endpoint proporcionado por <a href="https://midas.minsal.cl/farmacia_v2/WS/getLocalesTurnos.php">MIDAS</a> (Modernización de la Información Digital de la Autoridad Sanitaria)
+            </p>
+
+            <p>
+                Consiste en un front-end hecho con React desde el cual se realiza el request de los datos a la API antes mencionada, se manipulan de forma pertinente los datos y se muestran en un mapa (Leaflet).
+                El código se encuentra en este <a href="https://github.com/iwayato/FarmaciaDeTurnoCL">repo.</a>
+            </p>
+
+            <h2>Screenshots</h2>
+
+            <figure>
+                <img src="../Img/farmacia_de_turno_1.png" alt="">
+            </figure>
+
+            <figure>
+                <img src="../Img/farmacia_de_turno_2.png" alt="">
+            </figure>
+
+            <br>
+            <br>
+            <br>
+        </div>
+    </main>
+</body>
+
+
+</html>
