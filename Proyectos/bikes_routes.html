@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iwayato</title>
+    <link rel="stylesheet" href="https://unpkg.com/mono.css@latest/dist/mono.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="inner">
+            <div class="header-logo">Proyectos</div>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <div class="inner">
+            <a href="../index.html">Perfil</a>
+            <a href="https://github.com/iwayato">GitHub</a>
+            <a href="https://www.linkedin.com/in/tomoaki-iwaya">LinkedIn</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <div class="inner">
+            <h1>Aplicación para visualizar datos desde archivos .fit</h1>
+
+            <p>
+                <a href="https://bike-routes.vercel.app/">Esta app</a> es una especie de bitácora (como Strava, pero mucho más simple) que permite ir registrando tus rutas en bicicleta (u otra actividad) a partir de un archivo .fit. Personalmente yo uso <a href="https://support.decathlon.es/van-rysel-gps-100">este GPS barato</a> para ir guardando las rutas, el cual posee una app propia para ir subiendo las rutas a tus dispositivos, pero funciona pésimo (por eso hice la web app).
+            </p>
+            <p>
+                Por el momento no he comprobado si funciona con archivos .fit generados por otros dispositivos, y tampoco he añadido la posibilidad de visualizar otras métricas como el ritmo cardiáco o la cadencia, dado que desarrollé la aplicación para mi caso particular (no uso ninguno de esos sensores ya que ando en bici de forma más recreativa).
+            </p>
+            <p>
+                Para almacenar los datos utilicé IndexedDB, asi que los datos sólo se quedan en el navegador y nada se comparte a otros sitios.
+            </p>
+
+            <h2>Screenshots</h2>
+
+            <figure>
+                <img src="../Img/bike_routes_dashboard.png" alt="">
+            </figure>
+
+            <figure>
+                <img src="../Img/bike_routes_example.png" alt="">
+            </figure>
+
+            <br>
+            <br>
+            <br>
+        </div>
+    </main>
+</body>
+
+
+</html>
