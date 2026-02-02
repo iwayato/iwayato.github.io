@@ -19,8 +19,8 @@
     <nav class="menu">
         <div class="inner">
             <a href="../index.html">Perfil</a>
-            <a href="https://github.com/iwayato">GitHub</a>
-            <a href="https://www.linkedin.com/in/tomoaki-iwaya">LinkedIn</a>
+            <a href="https://github.com/iwayato" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/tomoaki-iwaya" target="_blank">LinkedIn</a>
         </div>
     </nav>
 
@@ -49,7 +49,7 @@
                 de reconocimiento facial:
             </p>
             <figure>
-                <img src="../Img/etapas_reconocimiento_facial.png" alt="">
+                <img src="../Img/proyecto_titulacion/etapas_reconocimiento_facial.png" alt="">
                 <figcaption>Etapas para realizar reconocimiento facial.</figcaption>
             </figure>
 
@@ -85,7 +85,7 @@
             </p>
 
             <figure>
-                <img src="../Img/proceso_rectificacion.png" alt="">
+                <img src="../Img/proyecto_titulacion/proceso_rectificacion.png" alt="">
                 <figcaption>Proceso de rectificación de una imagen.</figcaption>
             </figure>
 
@@ -105,21 +105,21 @@
             <h3>En el robot</h3>
 
             <figure>
-                <img src="../Img/arq_robot.png" alt="">
+                <img src="../Img/proyecto_titulacion/arq_robot.png" alt="">
                 <figcaption>Arquitectura completa en el robot.</figcaption>
             </figure>
 
             <h3>En un servidor en la nube / local</h3>
 
             <figure>
-                <img src="../Img/arq_servidor.png" alt="">
+                <img src="../Img/proyecto_titulacion/arq_servidor.png" alt="">
                 <figcaption>Arquitectura completa en un servidor local / nube.</figcaption>
             </figure>
 
             <h3>Híbrida</h3>
 
             <figure>
-                <img src="../Img/arq_hibrida.png" alt="">
+                <img src="../Img/proyecto_titulacion/arq_hibrida.png" alt="">
                 <figcaption>Arquitectura híbrida.</figcaption>
             </figure>
 
@@ -132,7 +132,7 @@
                 </li>
 
                 <figure>
-                    <img src="../Img/consideracion_webcam.png" alt="">
+                    <img src="../Img/proyecto_titulacion/consideracion_webcam.png" alt="">
                 </figure>
 
                 <li>
@@ -150,7 +150,7 @@
             Se consideraron más requerimientos tanto funcionales como no funcionales, sin embargo en las tablas se indican las más relevantes.
 
             <figure>
-                <img src="../Img/req_funcionales.png" alt="">
+                <img src="../Img/proyecto_titulacion/req_funcionales.png" alt="">
             </figure>
 
             <h2>
@@ -158,7 +158,7 @@
             </h2>
 
             <figure>
-                <img src="../Img/req_no_funcionales.png" alt="">
+                <img src="../Img/proyecto_titulacion/req_no_funcionales.png" alt="">
             </figure>
 
             <h2>Evaluación de las arquitecturas</h2>
@@ -170,7 +170,7 @@
             </h3>
 
             <figure>
-                <img src="../Img/eva_req_funcionales.png" alt="">
+                <img src="../Img/proyecto_titulacion/eva_req_funcionales.png" alt="">
             </figure>
 
             <ul>
@@ -187,7 +187,7 @@
             </h3>
 
             <figure>
-                <img src="../Img/eva_req_no_funcionales.png" alt="">
+                <img src="../Img/proyecto_titulacion/eva_req_no_funcionales.png" alt="">
             </figure>
 
             <ul>
@@ -205,19 +205,19 @@
             <h4>Con la función resize() de OpenCV</h4>
 
             <figure>
-                <img src="../Img/resize_opencv.png" alt="">
+                <img src="../Img/proyecto_titulacion/resize_opencv.png" alt="">
             </figure>
 
             <h4>Con la función upsample() de Dlib</h4>
 
             <figure>
-                <img src="../Img/resize_upsample.png" alt="">
+                <img src="../Img/proyecto_titulacion/resize_upsample.png" alt="">
             </figure>
 
             <h4>Utilizando Super Resolution (SR)</h4>
 
             <figure>
-                <img src="../Img/resize_sr.png" alt="">
+                <img src="../Img/proyecto_titulacion/resize_sr.png" alt="">
             </figure>
 
             <p>
@@ -229,13 +229,13 @@
             Si bien con la implementación híbrida se mejoró considerablemente el tiempo de envió, dado que el servidor sólo recibía la imagen del rostro, la calidad de éstas era bastante mala como para que el módulo de extracción de características realizará una operación adecuanda. En la mayoría de los casos las imágenes de los rostros tenían el siguiente aspecto:
 
             <figure>
-                <img src="../Img/low_res_faces.png" alt="">
+                <img src="../Img/proyecto_titulacion/low_res_faces.png" alt="">
             </figure>
 
             y en el mejor de los casos:
 
             <figure>
-                <img src="../Img/best_res_faces.png" alt="">
+                <img src="../Img/proyecto_titulacion/best_res_faces.png" alt="">
             </figure>
 
             <p>
@@ -247,13 +247,13 @@
             La configuración física consistió en montar la webcam sobre la cabeza del robot (usando claramente cinta aislante como buen ing electrónico):
 
             <figure>
-                <img src="../Img/webcam_on_go1.png" alt="">
+                <img src="../Img/proyecto_titulacion/webcam_on_go1.png" alt="">
             </figure>
 
             Con este setup, se logró realizar reconocimiento facial hasta con tres rostros en escena a una resolución de 640 x 480 [px], obteniendo los siguientes tiempos:
 
             <figure>
-                <img src="../Img/tiempos_final.png" alt="">
+                <img src="../Img/proyecto_titulacion/tiempos_final.png" alt="">
             </figure>
 
             <h2>Conclusiones</h2>
